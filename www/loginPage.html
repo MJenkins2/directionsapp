@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - Hofstra University</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/cas-web/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/cas-web/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/cas-web/css/cas.css?d=11917" rel="stylesheet">
+    <link href="css/cas-web/favicon.ico" rel="icon" type="image/x-icon">
+    <meta name="apple-itunes-app" content="app-id=895637712">
+    <meta name="google-play-app" content="app-id=com.hofstra_university.hofstra">
+    <!-- Touch Icons -->
+    <link href="css/cas-web/images/touch-icons/apple-touch-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
+    <link href="css/cas-web/images/touch-icons/apple-touch-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
+    <link href="css/cas-web/images/touch-icons/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
+    <link href="css/cas-web/images/touch-icons/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+    <link href="css/cas-web/images/touch-icons/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
+    <link href="css/cas-web/images/touch-icons/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+    <link href="css/cas-web/images/touch-icons/apple-touch-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
+    <link href="css/cas-web/images/touch-icons/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+    <link href="css/cas-web/images/touch-icons/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180">
+    <meta name="msapplication-square70x70logo" content="css/cas-web/images/touch-icons/smalltile.png">
+    <meta name="msapplication-square150x150logo" content="css/cas-web/images/touch-icons/mediumtile.png">
+    <meta name="msapplication-wide310x150logo" content="css/cas-web/images/touch-icons/widetile.png">
+    <meta name="msapplication-square310x310logo" content="css/cas-web/images/touch-icons/largetile.png">
+    <link href="css/cas-web/css/smart-app-banner.css" rel="stylesheet" type="text/css" media="screen">
+</head>
+<body class="login" id="cas">
+    <div class="cycler" id="bg">&nbsp;<img aria-hidden="true" style="display: block;" alt="Flower" src="css/cas-web/images/portal-login-015-lg.jpg"><img aria-hidden="true" style="display: none;" alt="Flower" src="/cas-web/images/portal-login-009-lg.jpg"><img aria-hidden="true" style="display: none;" alt="Flower" src="/cas-web/images/portal-login-010-lg.jpg"><img aria-hidden="true" style="display: none;" alt="Flower" src="/cas-web/images/portal-login-014-lg.jpg"><img aria-hidden="true" style="display: none;" alt="Flower" src="/cas-web/images/portal-login-008-lg.jpg"><img aria-hidden="true" style="display: none;" alt="Flower" src="/cas-web/images/portal-login-013-lg.jpg"><img aria-hidden="true" style="display: none;" alt="Flower" src="/cas-web/images/portal-login-007-lg.jpg"></div>
+    <script>
+        var shuffleArray = function (array) {
+            var currentIndex = array.length, temporaryValue, randomIndex;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+                // Pick a remaining element...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+
+                // And swap it with the current element.
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }
+
+            return array;
+        }
+
+        popImages = function (array) {
+            for (var i = 0; i < array.length; i++) {
+                var elem = document.createElement("img");
+                elem.setAttribute("src", array[i]);
+                if (i > 0) {
+                    elem.setAttribute("style", "display:none");
+                }
+                elem.setAttribute("alt", "Flower");
+                elem.setAttribute("aria-hidden", "true");
+                document.getElementById("bg").appendChild(elem);
+            }
+        };
+
+        var sizeAppend = "xs";
+        var vpWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+
+        if (vpWidth >= 1200) {
+            sizeAppend = "lg";
+        }
+        else if (vpWidth >= 992) {
+            sizeAppend = "md"
+        }
+        else if (vpWidth >= 768) {
+            sizeAppend = "sm"
+        }
+        else {
+            sizeAppend = "xs"
+        }
+
+        var dayImgs = ["css/cas-web/images/portal-login-007-" + sizeAppend + ".jpg", "css/cas-web/images/portal-login-008-" + sizeAppend + ".jpg", "css/cas-web/images/portal-login-009-" + sizeAppend + ".jpg", "css/cas-web/images/portal-login-010-" + sizeAppend + ".jpg", "css/cas-web/images/portal-login-013-" + sizeAppend + ".jpg", "css/cas-web/images/portal-login-014-" + sizeAppend + ".jpg", "css/cas-web/images/portal-login-015-" + sizeAppend + ".jpg"]
+        var nightImgs = ["css/cas-web/images/portal-login-011-" + sizeAppend + ".jpg", "css/cas-web/images/portal-login-012-" + sizeAppend + ".jpg"]
+
+        dayImgs = shuffleArray(dayImgs);
+        nightImgs = shuffleArray(nightImgs);
+
+        var today = new Date().getHours();
+        if (today >= 6 && today <= 18) {
+            popImages(dayImgs);
+        }
+        else {
+            popImages(nightImgs);
+        }
+
+    </script>
+    <header class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header" style="float:left;">
+                <a class="navbar-brand" href="css/cas-web/login"><img class="img-responsive" alt="Hofstra University Logo" src="css/cas-web/images/hofstra-logo-large.png"></a>
+            </div>
+        </div>
+    </header>
+    <div class="container" id="container">
+        <div id="content">
+            <div class="row">
+                <!--<div id="notices" class="col-sm-12 col-md-6 col-md-push-6">
+                    <div th:replace="fragments/insecure"/>
+                    <div th:replace="fragments/defaultauthn"/>
+                    <div th:replace="fragments/cookies"/>
+                    <div th:replace="fragments/serviceui"/>
+                    <div th:replace="fragments/cas-resources-list" />
+                    <div th:replace="fragments/loginProviders" />
+                </div>-->
+                <div class="col-md-5 col-md-offset-3">
+                    <div class="box" id="login">
+                        <!--<div class="login-header">
+                            <h2 th:text="#{cas.login.pagetitle}"></h2>
+                            <span class="fa-stack fa-2x hidden-xs">
+                              <i class="fa fa-circle fa-stack-2x"></i>
+                              <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </div>-->
+                        <div class="well" id="login-form">
+                            <form id="fm1" method="post">
+
+                                <!--<h2 th:utext="#{screen.welcome.instructions}"></h2>--><section>
+                                    <label for="username"><span class="accesskey">U</span>sername:</label>
+                                    <div class="form-group">
+                                        <input name="username" tabindex="1" class="required form-control" id="username" accesskey="u" type="text" size="25" value="" autocomplete="off">
+                                    </div>
+                                </section>
+                                <section>
+                                    <label for="password"><span class="accesskey">P</span>assword:</label>
+
+                                    <div class="form-group">
+                                        <input name="password" tabindex="2" class="required form-control" id="password" accesskey="p" type="password" size="25" value="" autocomplete="off"><span id="capslock-on" style="display:none;">
+                                            <p>
+                                                <i class="fa fa-exclamation-circle"></i>
+                                                <span>CAPSLOCK key is turned on!</span>
+                                            </p>
+                                        </span>
+                                    </div>
+                                </section>
+
+                                <div class="alert alert-danger" id="other-errors"></div>
+                                <div class="alert alert-danger" id="username-error">
+                                    <p>Please enter your username</p>
+                                </div>
+                                <div class="alert alert-danger" id="password-error">
+                                    <p>Please enter your password</p>
+                                </div>
+
+                                <section class="row check"></section>
+
+                                <section class="row btn-row">
+                                    <div class="col-xs-12">
+                                        <!--<input name="execution" type="hidden" value="1baf48dd-0470-4be6-9560-91f590a63413_ZXlKaGJHY2lPaUpJVXpVeE1pSjkuYmtOT1VqTklNM2d3ZG5KWlVFUnpSRGR1Ym05SmFGSjVNWFJYZGpBdmFFRkNTbXB2YUVadE1FZEthbnBTVTB0UlRrZEpjelpJWlRSbmNtOHJRMVptTVRCMGVtOHhZMWRtYlNzelRuVjVaR3RRZVhWYVpTdFNRaTlNTURsSVNFMUNNVWhSVmpCalVETk1jV3hCVEZJMWFFdzNiRWxpZWxWWGFFZEpLMnN2TTJONllqTXJTbkpTWkdsRGNESlBUWE5sTVRacU4yNWtNVU5TUWk5cmIyaFlNVlJ4WTFwTlNtSmxaWGxsUTBaUmRHWjFVbTV5UXpCdmNGSk9aWGd3UVhVclRqUlZVMVoxYTNONlRVaDVhR00yVm5aMVZYQnpWR0ZvTlVoM2RWbFFlVUpoUW5aWFZWTkRNbW93VkVSbFUxZzBSVVIwVldGVU5VUXhRbTFyYzI1eVkxZFRNbk53WkVoRmNXcDVVRXh5T1ZWS0syNUVVMVJTTTJjeWVWRjRXSGh2WmxsNGJqVjFUMUZPVEV4bVIwNDNWemhPZVVVNFQwdGhaRXhHY1dKWE4waG9SWEowU0dkUVZrcDJTemd3VG0xTU5rUnhjVWxaY1V0VFNXeHJMeXRFUnpGNU5HZHhNMXBhY2tRdmVXWktNbWRYVW1kT1ptUkphbUo0U1RKa1NWVTFRVUpJVkZOQ1pUTnNMelpTUm5oaVYxTmFRV1JtVkVGME9HTlpjM2d3YWtWcmQzbG1kakZUVWxreWRYZE9ORUZ4ZEdKd1FVTm1WVVpuVEcwNVMyUnJja0ZFUWpoYVVtZElaV2M0UjBsQldrTmhPV2d4VW0xdlVXa3dkM2xTV1dKNlVrUlVXamxyTmpSUmNHODJTakJNZG5jNVYydDVUSEZsTjB0YWJVRmhlRWRsYVZZMmRXb3JUV05VTlM5UkswdDFRVzlDYlZaUVFVNDJOemR0YTFkVFlXaHZiM0JLVm1oQmNuSkZOVGxSVkVKTGEwOWhZbkZ2ZG10RFMzUmtVbkJGU0VKS1N6QjNNRk56SzJaSGVuQXpkbXBFVUZscE1HWTVRVmhSWjNBeE9XRnBiRXhPTUhSVlIwcFVMMVpXY2pWWE9XUndiRVYxWWpRM05HOVdNVlYyUlZOTmJuaFpNMVZ6TWpsRGIydFdTakE1UkhkNVZUWm1aMmRoUW1GM1NVUlFTamhwT0ZnMVUwaHdjVE5OU1dKMWJFa3pjV2xWYVhWMVVETjBUVGt5Vml0cU5rZGFTMjg1YVhwUllVeDFiazFaVWxsc2NYQkhTR0kyYlN0SmR6VnRaVzg1U0VveGJsbE5WMXB4T1VrelFuSkpRa1ppZFV0dFRrazJjVTl3V2xKdWJUUnViMVl2Vm1WT2NWbGlXVkZ2ZGxab1pIbGFaemRVY3pCUGVIZzNRMjlGWWxVNWNWRlNhelptTlVkTVZsTldTWGtyY1RsMFFtNTRaVGhzTlc5TE1WaFpTbVJXYW1waWRqSkpNRlJpYVZvM01YTXpkbTl4YVVWelQyeDNSR0Z2WldoaGNrRm9NVGRqVFM5Q1pYRnhhbFZwTmxkaGJWWnhlRWRyTTBaUWVuSkRWRFJDVnpWSVEwc3pZV0ZOUVRWSFMwZFJNemQ2VlhaMlJuWllVelZuVmxCcFowZzBSVVJXVTJ0c2JVc3lWMHg1ZFRWek9WcDFhaXRzVjFwNE0yRjNZbUp1VFVVemJrTklSMmM1YWtsVWEwbHFhbXRzUlRaaVRHNXNNM2RSV0dNeU0ydEtiMlZCUldnck1EWldNVlZrVkc5dlRuZ3ljR1EyWVZsNGQxSlBaMk5HYm1Ndk5VOHlSRE5wVGxsd09FdzFXalptYjBkVmVuWjVRWGhIZGxWTFFuUmhaRUZuYTJJNFUySkZhbnBtU1RCcmJsVTNZa2xWZWxKS1NFaEhhVmhpUTFSWmVYUXplVmxzY1UxbmNHMXJORzl6Tnk4NVpFa3pha2d3Y2tObU1reEdNekJaVDJzNVNDczVaMnRVZWpGaVYyVnVlVzVNUm5GV2VHSmljbkl4ZUZNeEwwbGxXREpHYWxRNGVFeGxXVTE2T1doS2VHODRMMUE0UlhCNmQwaDNMekJrTkVad01uVkNjazV1YTBGWGJuTk5jMngxYm5kWmVVOUNRMnQ2TTB3ell6aG1ORkZVWW5sWWEwWlBNMk56T0ZwamFTczNVRGM1Y2pWcFJsbHRaMUo0YjJSaFkwNWlkemhzYUcxRmEwbGtkamxHYWt0dlVGbFVMemx3V21FNGN6VTROVGgwY1dod05HZGhVVVkzWkhKUGJrSTRSbWgzUzNkeU5GVk1TMFZUVW10T1prdHRVME5NV0dkTmRtcHBlVlJUWWxoc1NFZFlaSHBYV0dzeVdtWnViblpGWkhnNVYxRkNZbFpVUkROWUsyOUxNU3MxZFRKeU0zaEZLM0FyTlM4d2JTOHZWV3ByTDNNeE1XdHhhRkJRY0c5T1V6QkRPWEZtYlVkc00wZHZjSEpRTVc1U2RrRnZTM2hyZDBjemFHeElZemRrUm1WQlQyWTFWRXgxTlRRcldtbFdWeTltTWxSTFJWWTNhamx0VFdaWFJTdHhRWEZ2YUdSMFFtRjBiVFZUVERVMVRIcFVjRmRsWmpnclRUQldSVU5HZVRoNVlUTkdiVlZGWkZSNWFYSnRXR0ZhZEVKaVUzaFdVek5OYVdJNFNqYzRXbkp5VTJWYU5DOWhaRGhZYkZCa1JIVlVWMlYzZVc1M1JqSldjR2hGZFZWU0t6YzVWVlpzZFVodkszWlJRbkV6TVZSTFVVdG9ZMXBpYzBKcmFTOVBUbEp6TjFaYVpISnRUVVVyVjFWV09UUlhXVXgzT0dOQmNUWXlkRkpLZDFCd1dYcEZRbm92T0VjelRteE9SRW95ZVc5MllXWlBaVFIxVnpGVGMwNURVVmxpUTBoSVFqTkdOMmhOVG5OVFRXazRjRVZFYTJkeWNIcG9SMmN3UzB4SVkyRk1ia2w1TTFGNVNGZEVUazAyY1VwYWEyRkhlR3BYVGpORlYyaEdjRUp5TTNSb1YwTkhhRU01WW5wd1kwUk5lRTgzVEM5MFJXTk9MMVY2T1d0RmFYVjNSRXhGUVUxb01GVXphWGRHV20xeGJrOHlkRzVtTW1FM1JHZDZSSHBwYzFSMFZqVkVaMGxtVG5JeldVaFdNMlo1VURSYU1tdEtZMUo0UzNFMWRWVTBhMDFrVTFOalVEbFVSbk5EVkVkc1prdzFWSEJQUlVGUmRXMXJXVUZtVUZadGNrVlBUMkV6U3paT2MzUnphV2t6UlhsUVZTc3pkMVJ4VjFOV1VqUTFZMU41VDJFNVFscHdaMlV3U0hnMmNUSjBTelJ1TnpWMk1UazJaR3hZTUZSMWRXNXRjVGMyWmt3M1ptUlBaM0k0UWtOc01qbE9URFF5THpaVWNHUTNiV016U3pWblVpdFlSV2gyVUZKVGRWWkZVMmRoZW5BcksySnVjVXBRUldWNlJqaDJkSFp6YkZncmRtUTFiVWdyU25GWloyNXBVeXROYUVNemNqWnRTbGRDTjBwQ2FuZFNaRlZYSzFKeWVuWjViVk5hWmxKNUwxbzRNR0pIUW1OMFVXeG9LMmhLTWxsMVdrc3hMMlZFVWpCSVkyNVdXSEJFYmtOeGRtbEdZMGd3ZHpaaVIycHZTa0pVV0hkTFJqSXJXWGRyTW1oUWN6QkRkemgwYlVOTk0zUXhaVTlGZEhGalpWaFZjSGd6YVRScWNXSk9jR1poY0hOc1pscG5aRFpWTWtNd2FrZzNNWFZ4UlVkcU1ISlNjbkYzZFZaQk56bFVURlpoTjFwSU0yNHJjV1ZZT0dOalYyZHBjMFZ2WjJaTWVERXlZWGMwVmxadmJrSkxTV0p5TmlzeGRpOTBkbTVCZGxGUGRXUmhOblZtZDNWUVRqWk5hazh4YnpsQlZ5ODNNWFJEU1N0d1VrOWpVMWg2VlVFd1JYUXhMekF5ZVhCaloxTnRhRUZDWldaV1IzbGtkVTUwWldObVIyNHlkMHRaZFZSMWNHWndOVUZIVFZKMVluSjFVa1ZYZEVORVV6Z3hjV0V5YjBod1lucHVia2h5VkhwekszSnZaMmhJVVUxRlJFcFpValZoWjNCWVVteFNiMDVDZUUxdGNXMWpWVk5zT1U1UGVIRXdaRUpDVVZKRmJrbG9RVlpDYVVVNGRqaDZTV0pyVnpKTVJrOHJWV0kyVkhvemRXaGthREpGVTBGT1FUaG9iV3RVZEZWc09UUlJXR000TWxJelR6VnpZMlpLUkdwVFkzcHNaRE5OVjJwdGNTdDNVa3RqYjFNeE1XMDBVREpOVDNObVNuaEZkRGRDWTA5WmVUVnZOMEYwTmtkcE1EWnBNRk40YTBJemNXRk1lbVp1U0U5TFUzbzNUbk41WW1Jd2VVTm9OV3R1YlVkUWVVNU5aekpzYkVZNFJETjZjR0l6U1VnMU9VNHZZVlJUWlhCUVFqSllRMHhXWWpBeFQySTBRVzk1UjNSblYySldRMmh5TWpkV2VUWXpMMVJ4WkN0RVJXczFURmhaU0V4VGRYb3hSako1VEhCWGRtdEVUR2RTTUZSc05GQTVZbkZrTUZGMGNqTXdSemhuVm5OelFWQkNTRkppU0ZaU1ltdE1PRlpPUkVWTWRUZzNaRlJ3UkV0eFpFNWpWVzlWYkZCUVRGb3ZXVlZQTVc5SWRHUkRTbUpxZUZBeE5XRnNVMDB6VlhoSVRpdHRNV051YVRrMmJUbFFjazEwV0RkelJ6SnVXa1kxTkVreGNWUmlVWEl3Wms5RmNWSlZSWE16VUN0cE5sWTRSMkp0ZVVGc1VYZDRVMUZEZG5Wc2J6TlpPQzlXYW1WM1kxRm1UamxMV1Uxb05UTkVUV1ZMZERKelVHWm9aM1ZNVEdscFMyVldOMnBoUm5GcU5HMTZNM0pwUzNsc2ExZElWVGhKZG5OUE5VbHBOakZKVmlzd2VHdHZOemxwTm05YWRIaGhlVWhYYUdWMlZqRnBUM2xzY0dSeFdsSkdOV2c1TW5WRlFuWjZSMWRrSzJOMWNYUkdNMjlRUzFjek5XYzJWSFZPTUhodk9URlRlV2gyZFd4bWFXcFViemcwZWxKRk56QnlMM2h3YWxaaVpXcEJUalJFY3pkR1VWSmFNV1E1VG1KWGFDczFibk42V1VSck1VcElWV3RZVGxsYVQzSmtSMVJsVTBaVk5qSkpLMUpEU1ZGaGVtNWpZMU5SWjNoWFN6WkRXRkl5U1VOSlNYZGtNRVJYVVhaNFZHaHFhM3BxVW1aTFVFaFhXRnBrUld0Q1dXTnNNamxzYXpCTWNXcGxNMjV5TkdZeFpFTjZPVXh5YzBkS1RsQTFUbHA2WjBnNE9UQktObHAzVEZaelIwWnNXWE42TWpWcWJHRjFTbGRSVVVwTlNGQkJlVk51SzNwYWNtMXROekF2VUVSdFYwNUZMeXRIY2tWSlJIQkRUMDV5T0RkUGFWUXdTbmQ0ZEVrM016bEtkR0ZHVmxkWU5rNVFPWEJWV2pKTGFsSTJSR3d6WldGMVNFUTBLM3BaUkVwVFMxVjZjamx4YmtSV1ZYZGhWRk5EUkZSWlNtbEdWREZvVG01M05VZzFkMDB6U1VSVk1pOWlXVE55VTI1emJXRndZV2cwZVhRdmRGbE5UVVl2YkRkSFRsUnJSRmREYlVrd01GUkpOVzFuUFQwLkxhTWw5WGYwQm5ZUTdHQkJLYkNCQ25oM0NUem84eW15ZG5aNlpQZ2ZiV1Jid3RqUUdPeDdnc0poM0p4cjZPMWdMbjcyYlo5RmQ0Zk9ZOTFhemlWc3VB"><input name="_eventId" type="hidden" value="submit"><input name="geolocation" type="hidden"><input name="submit" tabindex="6" class="btn btn-primary btn-block btn-lg" accesskey="l" type="submit" value="REGISTER">-->
+                                        <a class="btn btn-primary btn-block btn-lg" onclick="goToMap()">LOGIN</a>
+                                    </div>
+
+                                </section>
+                                <p class="clearfix"></p>
+                                <section class="row btn-row">
+                                    <div class="col-sm-6">
+                                        <a class="btn btn-info btn-block" onclick="goBackHome()">BACK</a>
+                                    </div>
+                                </section>
+                            </form>
+                        </div>
+
+                        <!-- <form th:if="${passwordManagementEnabled}" method="post" id="passwordManagementForm">
+                            <input type="hidden" name="execution" th:value="${flowExecutionKey}"/>
+                            <input type="hidden" name="_eventId" value="resetPassword"/>
+                            <span class="fa fa-unlock"></span>
+                            <a th:utext="#{screen.pm.button.resetPassword}" href="javascript:void(0)" onclick="$('#passwordManagementForm').submit();" />
+                            <p/>
+                        </form> -->
+                        <!--     <div th:unless="${passwordManagementEnabled}">
+                            <span class="fa fa-question-circle"></span>
+                            <span th:utext="#{screen.pm.button.forgotpwd}" />
+                            <p/>
+                        </div> -->
+                        <script type="text/javascript">
+                            var i = "One moment please..."
+                            $("#fm1").submit(function () {
+                                $(":submit").attr("disabled", true);
+                                $(":submit").attr("value", i);
+                                return true;
+                            });
+                        </script>
+                        <!-- <div th:replace="fragments/loginsidebar"/> -->
+                    </div>
+                </div>
+                <script src="css/cas-web/js/authentication.js?v=10517"></script>
+                <script src="https://s3.amazonaws.com/login.hofstra.edu/no-cache/js/external.js"></script>
+            </div>
+        </div>
+    </div>
+    <footer></footer>
+    <!--<div th:insert="fragments/bottom"/>-->
+    <script src="css/cas-web/js/background-cycler.js"></script>
+    <div style="display:none;">LXLUMCASP4</div>
+
+    <img width="1" height="1" style="border: medium; border-image: none;" alt="" src="https://xe.hofstra.edu/StudentSSB/ssb/logout"><img width="1" height="1" style="border: medium; border-image: none;" alt="" src="https://hofstraonline.hofstra.edu/pls/HPRO/twbkwbis.P_Logout">
+</body>
+</html>
