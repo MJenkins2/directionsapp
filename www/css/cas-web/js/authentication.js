@@ -2,6 +2,26 @@
     location.href = "mapPage.html";
 }
 
+function passLogin() {
+    var test = "testing";
+    console.log(test);
+    var user = document.getElementById("username").value; 
+    var pass = document.getElementById("password").value; 
+    if (authenticate(user,pass))
+        location.href = "mapPage.html"
+    else
+        location.href = "index.html"
+}
+
+function authenticate(user,pass) {
+    return true;
+    /*if(user === "Hofstra")
+        return true;
+    else
+        return false;*/
+    
+}
+
 function goToLogin() {
     location.href = "loginPage.html";
 }
